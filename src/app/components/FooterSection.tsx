@@ -6,7 +6,8 @@ export function FooterSection() {
   const { t, isRTL } = useLang();
 
   const shareUrl = typeof window !== "undefined" ? window.location.href : "";
-  const shareText = "You are invited to celebrate the wedding of Amir & Amira on 29 July 2026 🎊";
+  const shareText =
+    "You are invited to celebrate the wedding of Amir & Amira on 29 July 2026 🎊";
 
   const shareLinks = [
     {
@@ -32,7 +33,10 @@ export function FooterSection() {
   return (
     <footer
       className="relative py-20 px-6 overflow-hidden"
-      style={{ background: "#1a1208", borderTop: "1px solid rgba(184,151,90,0.15)" }}
+      style={{
+        background: "#1a1208",
+        borderTop: "1px solid rgba(184,151,90,0.15)",
+      }}
     >
       <div className="absolute inset-0 opacity-8">
         <img
@@ -50,20 +54,33 @@ export function FooterSection() {
           transition={{ duration: 0.8 }}
         >
           <span
-            style={{ fontFamily: "'Great Vibes', cursive", fontSize: "clamp(3rem, 8vw, 5rem)", lineHeight: 1.2 }}
+            style={{
+              fontFamily: "'Great Vibes', cursive",
+              fontSize: "clamp(3rem, 8vw, 5rem)",
+              lineHeight: 1.2,
+            }}
             className="text-amber-300 block mb-4"
           >
             {t("coupleNames")}
           </span>
 
           <p
-            style={{ fontFamily: isRTL ? "'Amiri', serif" : "'Cormorant Garamond', serif", fontStyle: "italic", fontWeight: 300 }}
+            style={{
+              fontFamily: isRTL
+                ? "'Amiri', serif"
+                : "'Cormorant Garamond', serif",
+              fontStyle: "italic",
+              fontWeight: 300,
+            }}
             className="text-amber-100/50 text-xl mb-2"
           >
             {t("footerMessage")}
           </p>
           <p
-            style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.15em" }}
+            style={{
+              fontFamily: "'DM Sans', sans-serif",
+              letterSpacing: "0.15em",
+            }}
             className="text-amber-400/40 text-xs uppercase mb-12"
           >
             {t("weddingDate")}
@@ -77,9 +94,17 @@ export function FooterSection() {
 
           {/* Social share */}
           <div className="mb-10">
-            <div className={`flex items-center justify-center gap-2 mb-5 ${isRTL ? "flex-row-reverse" : ""}`}>
+            <div
+              className={`flex items-center justify-center gap-2 mb-5 ${isRTL ? "flex-row-reverse" : ""}`}
+            >
               <Share2 size={14} className="text-amber-400/50" />
-              <p style={{ fontFamily: "'DM Sans', sans-serif", letterSpacing: "0.2em" }} className="text-xs uppercase text-amber-400/50">
+              <p
+                style={{
+                  fontFamily: "'DM Sans', sans-serif",
+                  letterSpacing: "0.2em",
+                }}
+                className="text-xs uppercase text-amber-400/50"
+              >
                 {t("footerShare")}
               </p>
             </div>
@@ -95,14 +120,22 @@ export function FooterSection() {
                   className={`flex flex-col items-center gap-2 text-amber-200/30 ${color} transition-colors duration-300`}
                 >
                   <Icon size={22} />
-                  <span style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-xs">{label}</span>
+                  <span
+                    style={{ fontFamily: "'DM Sans', sans-serif" }}
+                    className="text-xs"
+                  >
+                    {label}
+                  </span>
                 </motion.a>
               ))}
             </div>
           </div>
 
-          <p style={{ fontFamily: "'DM Sans', sans-serif" }} className="text-amber-200/20 text-xs">
-            © 2026 Amir & Amira Wedding. Made with ♥
+          <p
+            style={{ fontFamily: "'DM Sans', sans-serif" }}
+            className="text-amber-200/20 text-xs"
+          >
+            © 2026 Amir & R Wedding. Made with ♥
           </p>
         </motion.div>
       </div>
