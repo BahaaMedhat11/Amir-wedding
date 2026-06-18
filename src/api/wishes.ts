@@ -1,5 +1,5 @@
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxthxehSFBZfORwfIAUbELuLiGIqbmQYSkasn6CKZzcco5D_wwwgsoPdHf-h8L1x1cljQ/exec";
+  "https://script.google.com/macros/s/AKfycbx2uO4ujlCEAxisS13H8Pj6ytivZfsnaWyD9zA3bmpYyAP9bnmTtBMNlV8xG4sS1TwB-Q/exec";
 
 export const addWish = async (wish: { name: string; message: string }) => {
   await fetch(API_URL, {
