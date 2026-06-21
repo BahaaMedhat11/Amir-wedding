@@ -1,34 +1,41 @@
-const API_URL =
-  "https://script.google.com/macros/s/AKfycbx2uO4ujlCEAxisS13H8Pj6ytivZfsnaWyD9zA3bmpYyAP9bnmTtBMNlV8xG4sS1TwB-Q/exec";
+const GAS_URL =
+  "https://script.google.com/macros/s/AKfycbwVRo3asubzmq2DkqlaR2ncwOepcB0381YVKO1o9s34Rn-PFoIFXPSK1f0PjkgcoyToaQ/exec";
 
-export const addWish = async (wish: { name: string; message: string }) => {
-  await fetch(API_URL, {
+export interface WishPayload {
+  name: string;
+  message: string;
+}
+
+export interface WishRecord {
+  id: string;
+  name: string;
+  message: string;
+  timestamp: number;
+}
+
+async function handleResponse<T>(response: Response): Promise<T> {
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(`Request failed ${response.status}: ${text}`);
+  }
+  return response.json();
+}
+
+export async function addWish(wish: WishPayload) {
+  const response = await fetch(GAS_URL, {
     method: "POST",
     headers: { "Content-Type": "text/plain" },
     body: JSON.stringify({
       name: wish.name,
       message: wish.message,
-      timestamp: Date.now(), // ← بنبعته من هنا
+      timestamp: Date.now(),
     }),
-    mode: "no-cors",
   });
-};
 
-export const getWishes = async () => {
-  const res = await fetch(API_URL + "?t=" + Date.now());
-  const text = await res.text();
+  return handleResponse<{ status: string; message?: string }>(response);
+}
 
-  let data;
-  try {
-    data = JSON.parse(text);
-  } catch {
-    return [];
-  }
-
-  return (data || []).map((wish: any) => ({
-    id: wish.timestamp?.toString() || crypto.randomUUID(),
-    name: String(wish.name || ""),
-    message: String(wish.message || ""),
-    timestamp: Number(wish.timestamp) || Date.now(),
-  }));
-};
+export async function getWishes() {
+  const response = await fetch(`${GAS_URL}?t=${Date.now()}`);
+  return handleResponse<WishRecord[]>(response);
+}
