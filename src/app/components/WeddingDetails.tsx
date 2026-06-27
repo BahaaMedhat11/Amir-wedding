@@ -3,7 +3,8 @@ import { motion, useInView } from "motion/react";
 import { Calendar, Clock, MapPin, Navigation } from "lucide-react";
 import { useLang } from "./LanguageContext";
 
-const GOOGLE_MAPS_URL = "https://maps.app.goo.gl/Ee5oJvtso1JFMiDb9";
+const GOOGLE_MAPS_URL =
+  "https://www.google.com/maps/place/31%C2%B002'31.0%22N+29%C2%B052'55.4%22E/@31.0419329,29.8794826,17z/data=!3m1!4b1!4m4!3m3!8m2!3d31.0419329!4d29.8820575?hl=en&entry=ttu&g_ep=EgoyMDI2MDYyNC4wIKXMDSoASAFQAw%3D%3D";
 
 export function WeddingDetails() {
   const { t, isRTL } = useLang();
